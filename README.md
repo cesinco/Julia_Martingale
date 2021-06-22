@@ -3,7 +3,7 @@ Continuing in my quest to learn how to program in Julia that I started with [Exp
 
 ## Brief Description
 
-I was unfamiliar with this strategy until recently when I had to implement this as a simulation using Python. This strategy can be used for any betting game where both the odds of winning and the payout are (approximately) 2:1. So in American Roulette, it can be applied to betting on red (or black), even (or odd), high (or low), or in fact, mixing every sequential bet up with any of those options. For the sake of simplicity, let's asusme that we always bet on black coming up on each spin of the wheel.
+I was unfamiliar with this strategy (described more completely at [wikipedia](https://en.wikipedia.org/wiki/Martingale_%28betting_system%29)) until recently when I had to implement this as a simulation using Python. This strategy can be used for any betting game where both the odds of winning and the payout are (approximately) 2:1. So in American Roulette, it can be applied to betting on red (or black), even (or odd), high (or low), or in fact, mixing every sequential bet up with any of those options. For the sake of simplicity, let's asusme that we always bet on black coming up on each spin of the wheel.
 
 The strategy holds that whenever we win the bet, the next amount bet will be reset to $1, regardless of what the previous bet amount was. Should we lose a bet, we double the previous amount of the bet, also regardless of what the previous bet amount was. It can easily be demonstrated that our accumulated winnings grow by exactly $1 with every win. For example, the sequence:
 
