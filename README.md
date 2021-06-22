@@ -26,7 +26,7 @@ Continuing the same sequence as above as in the table below would generate an ac
 | Accumulated   | $1      | $2      | $1      | ($1)     | $3      | $2      | $4      | $3      | $1      | ($3)      | $5       |
 
 
-The American Roullette wheel contains 38 slots, numbered 1 through 36 where these numbers are distributed among red and black colors, and two additional slots 0 and double 0, colored green. This means that in American Roulette (where the House always wins on the green-colored slots 0 and 00), the payout of 2:1 happens with odds of 38:18, giving the House a slight advantage on each spin.
+The American Roulette wheel contains 38 slots, numbered 1 through 36 where these numbers are distributed among red and black colors, and two additional slots 0 and double 0, colored green. This means that in American Roulette (where the House always wins on the green-colored slots 0 and 00), the payout of 2:1 happens with odds of 38:18, giving the House a slight advantage on each spin.
 
 ## The Experiments
 
@@ -34,7 +34,7 @@ Define an "episode" as a sequence of 1,000 spins of the wheel during which we ap
 
 1. Determine what the expected value of our winnings by the end of the 1,000th spin, and considering that we have unlimited funds for betting. If we accumulate winnings of the target amount of $80, we "walk away from the roulette table", pocketing our winnings. Any remaining rounds of the 1,000 would show this $80 amount.
 
-2. Determine what the expected value of our winnings by the end of the 1,000th spin, and considering that we have a limited bankroll of $256. If we accumulate winnings of the target amount of $80, we "walk away from the roulette table", pocketing our winnings. Eqully, if we accumulate losses of the bankroll amount of $256, we "walk away from the table", broke. Any remaining rounds of the 1,000 would show either the target winnings of $80, or the accumulated losses limited by our bankroll.
+2. Determine what the expected value of our winnings by the end of the 1,000th spin, and considering that we have a limited bankroll of $256. If we accumulate winnings of the target amount of $80, we "walk away from the roulette table", pocketing our winnings. Equally, if we accumulate losses of the bankroll amount of $256, we "walk away from the table", broke. Any remaining rounds of the 1,000 would show either the target winnings of $80, or the accumulated losses limited by our bankroll.
 
 For experiment 2, the only moderating factor on betting is that we cannot bet money that we don't have. So, if our bankroll + winnings (losses) = $117, and the simulation dictates that we must bet $128, we would have to trim our bet to $117 since this is the amount available to us.
 
@@ -42,7 +42,7 @@ For experiment 2, the only moderating factor on betting is that we cannot bet mo
 
 One approach to implementing this would be to loop through up to 1,000 rounds, drawing from a Binomial distribution with the correct odds on each trial of the episode, and applying the logic to accumulate the winnings (losses). However, since this implementation was to be performed in Python (and Python being notoriously slow), another - faster - approach had to be found that could make use of numpy's vectorized operations.
 
-This other approach would generate a numpy array containing 1,000 wins or losses based on a Bernoulli distribution using the same odds of winning. All operations on this array would also be performed using vectorized functions. Indeed, when first implemented in Python, this was the approach I used. Julia has built-in vectorized operations on arrays so it was natural to port this same appeoach to the Julia implementation.
+This other approach would generate a numpy array containing 1,000 wins or losses based on a Bernoulli distribution using the same odds of winning. All operations on this array would also be performed using vectorized functions. Indeed, when first implemented in Python, this was the approach I used. Julia has built-in vectorized operations on arrays so it was natural to port this same approach to the Julia implementation.
 
 ## Results
 
@@ -50,7 +50,7 @@ Before performing a simulation that will contain 1,000 episodes, each with 1,000
 
 ### Initial trials
 
-As can be seen by the chart below, the tendency is for all 10 episodes to increase their winnings over the first 300 trials, even when the losses are extreme, dipping well below the -$256 lower bound of the winnings. All 10 episodes eventully end up hitting the target of $80 by about the 200th trial.
+As can be seen by the chart below, the tendency is for all 10 episodes to increase their winnings over the first 300 trials, even when the losses are extreme, dipping well below the -$256 lower bound of the winnings. All 10 episodes eventually end up hitting the target of $80 by about the 200th trial.
 
 ![Initial run of 10 episodes](output/01_01_Winnings.png)
 
@@ -64,7 +64,7 @@ The above chart shows how the standard deviation of the winnings that starts out
 
 ![1000 episodes showing median, unlimited bankroll](output/01_03_Winnings.png)
 
-Contrast the chart immediately above showing the median winnings with the previous one showing the mean winnings. Despite still having the "erratic" behavior in the stndard deviation, the median value of the "pot" shows a steadily rising value.
+Contrast the chart immediately above showing the median winnings with the previous one showing the mean winnings. Despite still having the "erratic" behavior in the standard deviation, the median value of the "pot" shows a steadily rising value.
 
 ### Experiment 2
 
@@ -84,7 +84,7 @@ Being a novice Julia programmer (currently!), there was much to learn when devel
 
 ### Parameter passing in functions
 
-Perhaps there are other ways of implementing this, but I wanted to simulateously use a type declarion with parameters to guarantee that a function would be called with the correct type being passed in, but allow some of these parameters to take on a value of Nothing (either by being passed in explicitly, or as a default value). I learned about using the Union{} syntax to allow multiple types to be used as parameters.
+Perhaps there are other ways of implementing this, but I wanted to simultaneously use a type declaration with parameters to guarantee that a function would be called with the correct type being passed in, but allow some of these parameters to take on a value of Nothing (either by being passed in explicitly, or as a default value). I learned about using the Union{} syntax to allow multiple types to be used as parameters.
 
 ### Plotting
 
