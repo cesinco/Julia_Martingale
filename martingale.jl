@@ -2,11 +2,11 @@
 
 using Random
 using Statistics
-using DataFrames    # If necessary, download the package at the pkg prompt, i.e. add DataFrames
-using Distributions # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("Distributions")'
-using StatsBase     # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("StatsBase")'
-using Printf        # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("Printf")'
-using CSV           # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("CSV")'
+using DataFrames     # If necessary, download the package at the pkg prompt, i.e. add DataFrames
+using Distributions  # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("Distributions")'
+using StatsBase      # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("StatsBase")'
+using Printf         # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("Printf")'
+using CSV            # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("CSV")'
 using Dates
 using Base.Iterators
 using ArgParse       # You may need to run in your command prompt: julia -e 'import Pkg; Pkg.add("ArgParse")'
@@ -57,14 +57,6 @@ function configure_text_overlay(
     return text_overlay
 
 end
-
-# Ensure our output directory exists
-#mkpath("output")
-
-# Create a text file for recording diagnostic data
-#file_diagnostics = open("output/diagnostics.txt", "w")
-#time_start = now()
-#@printf(file_diagnostics, "Started at: %s\n", time_start)
 
 function run_episode(
       win_prob              :: Float64
